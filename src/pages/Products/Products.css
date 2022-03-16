@@ -38,19 +38,7 @@
   color: var(--Primary_Hover_Color);
 }
 
-.card {
-  background-color: var(--Color_White);
-}
-.card-sell-price {
-  margin-top: 5px;
-}
-.card-image-container {
-  padding: 0;
-  position: relative;
-}
-.favourites {
-  color: var(--Color_Danger_500);
-}
+
 
 @media screen and (max-width: 530px) {
   .sidebar {
