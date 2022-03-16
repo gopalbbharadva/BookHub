@@ -11,25 +11,35 @@ export const Home = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    (async () => {
-      try {
-        const { data: categories, status } = await axios.get("/api/categories");
-        const { data: productsData, status: statusCode } = await axios.get(
-          "/api/products"
-        );
-        status === 200
-          ? setCategories([...categories.categories])
-          : setCategories([]);
-
-        statusCode === 200
-          ? setHomeProducts([...productsData.products])
-          : setHomeProducts([]);
-
-      } catch (error) {
-        setError("Server having some issues!!!");
-      }
-    })();
+    try {
+      getCategories();
+      getHomeProducts();
+    } catch (error) {
+      setError("Server having issues");
+    }
   }, []);
+
+  const getCategories = async () => {
+    try {
+      const { data: categoryData, status } = await axios.get("/api/categories");
+      status === 200
+        ? setCategories([...categoryData.categories])
+        : setCategories([]);
+    } catch (error) {
+      setError("Server having some issues!!!");
+    }
+  };
+
+  const getHomeProducts = async () => {
+    try {
+      const { data: productsData, status } = await axios.get("/api/products");
+      status === 200
+        ? setHomeProducts([...productsData.products])
+        : setHomeProducts([]);
+    } catch (error) {
+      setError("Server having some issues!!!");
+    }
+  };
 
   return (
     <div>
@@ -52,7 +62,7 @@ export const Home = () => {
       </div>
       {/* App intrduction ends */}
 
-      {categories.length !== 0 || homeProducts.length !== 0 ? (
+      {categories.length !== 0 && homeProducts.length !== 0 ? (
         <div class="grid-category">
           <h2 className="section-heading center-text">Types</h2>
           <div class="book-type">
