@@ -13,7 +13,7 @@ export const HomeCard = ({ product }) => {
         <p className="card-sell-price">
           <span>{sellPrice}</span>
           <span className="card-cost-price">{costPrice}</span>
-          <span className="card-discount">{discount}off</span>
+          <span className="card-discount">{discount} off</span>
         </p>
       </div>
     </div>
