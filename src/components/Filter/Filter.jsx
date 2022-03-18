@@ -3,6 +3,7 @@ import "./Filter.css";
 import { FaStar } from "react-icons/fa";
 import { useFilter } from "../../contexts/FilterContext";
 import { initialState } from "../../barrelexport/Filterutil";
+import { actionTypes } from "../../helperFunctions/Filter/actionTypes";
 
 export const Filter = () => {
   const { filterState, filterDispatch } = useFilter();
@@ -14,6 +15,18 @@ export const Filter = () => {
     Family_and_relationship,
     Self_help,
   } = categories;
+  const {
+    CLEAR_ALL,
+    FILTER_BY_PRICE_RANGE,
+    SORT_BY,
+    FILTER_BY_FICTION,
+    FILTER_BY_NON_FICTION,
+    FILTER_BY_PHILOSOPHY,
+    FILTER_BY_FAMILY_AND_RELATIONSHIP,
+    FILTER_BY_SELF_HELP,
+    SORT_BY_RATING,
+  } = actionTypes;
+
 
   return (
     <>
@@ -22,7 +35,7 @@ export const Filter = () => {
           <h3>Filters</h3>
           <button
             onClick={() =>
-              filterDispatch({ type: "CLEAR_ALL", payload: initialState })
+              filterDispatch({ type: CLEAR_ALL, payload: initialState })
             }
             className="btn pd-sm is-primary"
           >
@@ -36,7 +49,7 @@ export const Filter = () => {
           <input
             onChange={(e) =>
               filterDispatch({
-                type: "FILTER_BY_PRICE_RANGE",
+                type: FILTER_BY_PRICE_RANGE,
                 payload: e.target.value,
               })
             }
@@ -64,7 +77,7 @@ export const Filter = () => {
             <input
               id="lth"
               onChange={() =>
-                filterDispatch({ type: "SORT_BY", payload: "LOW_TO_HIGH" })
+                filterDispatch({ type: SORT_BY, payload: "LOW_TO_HIGH" })
               }
               checked={sortBy && sortBy === "LOW_TO_HIGH"}
               type="radio"
@@ -76,7 +89,7 @@ export const Filter = () => {
             <input
               id="htl"
               onChange={() =>
-                filterDispatch({ type: "SORT_BY", payload: "HIGH_TO_LOW" })
+                filterDispatch({ type: SORT_BY, payload: "HIGH_TO_LOW" })
               }
               checked={sortBy && sortBy === "HIGH_TO_LOW"}
               type="radio"
@@ -91,7 +104,7 @@ export const Filter = () => {
             <input
               onChange={(e) =>
                 filterDispatch({
-                  type: "FILTER_BY_FICTION",
+                  type: FILTER_BY_FICTION,
                   payload: e.target.checked,
                 })
               }
@@ -106,7 +119,7 @@ export const Filter = () => {
             <input
               onChange={(e) =>
                 filterDispatch({
-                  type: "FILTER_BY_NON_FICTION",
+                  type: FILTER_BY_NON_FICTION,
                   payload: e.target.checked,
                 })
               }
@@ -121,7 +134,7 @@ export const Filter = () => {
             <input
               onChange={(e) =>
                 filterDispatch({
-                  type: "FILTER_BY_PHILOSOPHY",
+                  type: FILTER_BY_PHILOSOPHY,
                   payload: e.target.checked,
                 })
               }
@@ -136,7 +149,7 @@ export const Filter = () => {
             <input
               onChange={(e) =>
                 filterDispatch({
-                  type: "FILTER_BY_FAMILY_AND_RELATIONSHIP",
+                  type: FILTER_BY_FAMILY_AND_RELATIONSHIP,
                   payload: e.target.checked,
                 })
               }
@@ -151,7 +164,7 @@ export const Filter = () => {
             <input
               onChange={(e) =>
                 filterDispatch({
-                  type: "FILTER_BY_SELF_HELP",
+                  type: FILTER_BY_SELF_HELP,
                   payload: e.target.checked,
                 })
               }
@@ -169,7 +182,7 @@ export const Filter = () => {
             <input
               onChange={(e) =>
                 filterDispatch({
-                  type: "SORT_BY_RATING",
+                  type: SORT_BY_RATING,
                   payload: e.target.value,
                 })
               }
@@ -186,7 +199,7 @@ export const Filter = () => {
             <input
               onChange={(e) =>
                 filterDispatch({
-                  type: "SORT_BY_RATING",
+                  type: SORT_BY_RATING,
                   payload: e.target.value,
                 })
               }
@@ -203,7 +216,7 @@ export const Filter = () => {
             <input
               onChange={(e) =>
                 filterDispatch({
-                  type: "SORT_BY_RATING",
+                  type: SORT_BY_RATING,
                   payload: e.target.value,
                 })
               }
@@ -220,7 +233,7 @@ export const Filter = () => {
             <input
               onChange={(e) =>
                 filterDispatch({
-                  type: "SORT_BY_RATING",
+                  type: SORT_BY_RATING,
                   payload: e.target.value,
                 })
               }
