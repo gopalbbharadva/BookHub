@@ -64,12 +64,12 @@ export const Home = () => {
       {/* App intrduction ends */}
 
       {categories.length !== 0 && products.length !== 0 ? (
-        <div class="grid-category">
+        <div className="grid-category">
           <h2 className="section-heading center-text">Types</h2>
-          <div class="book-type">
+          <div className="book-type">
             {categories.map((item) => {
               return (
-                <div class="type type-fiction">
+                <div className="type type-fiction">
                   <img src={item.imgSrc} alt="no preview available" />
                   <p>{item.categoryName}</p>
                 </div>
@@ -79,8 +79,8 @@ export const Home = () => {
           {/* <!-- || Books category ends --> */}
 
           {/* <!-- || Books trending starts --> */}
-          <h2 class="section-heading center-text">India trending</h2>
-          <div class="book-trending">
+          <h2 className="section-heading center-text">India trending</h2>
+          <div className="book-trending">
             {products.slice(0, 4).map((item) => (
               <HomeCard product={item} />
             ))}
@@ -88,8 +88,8 @@ export const Home = () => {
           {/* <!-- || Books trending ends --> */}
 
           {/* <!-- || High selling books starts --> */}
-          <h2 class="section-heading center-text">High Selling Books</h2>
-          <div class="book-high-sell">
+          <h2 className="section-heading center-text">High Selling Books</h2>
+          <div className="book-high-sell">
             {products.slice(5, 9).map((item) => (
               <HomeCard product={item} />
             ))}
