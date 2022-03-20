@@ -7,6 +7,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { DataStoreProvider } from "./contexts/DataStoreContext";
 import { FilterProvider } from "./contexts/FilterContext";
 import { AuthContextProvider } from "./contexts/AuthContext";
+import { WishListProvider } from "./contexts/WishListContext";
 
 // Call make Server
 makeServer();
@@ -14,13 +15,15 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <FilterProvider>
-        <DataStoreProvider>
-          <AuthContextProvider>
-            <App />
-          </AuthContextProvider>
-        </DataStoreProvider>
-      </FilterProvider>
+      <AuthContextProvider>
+        <WishListProvider>
+          <FilterProvider>
+            <DataStoreProvider>
+              <App />
+            </DataStoreProvider>
+          </FilterProvider>
+        </WishListProvider>
+      </AuthContextProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")
