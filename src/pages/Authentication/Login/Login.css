@@ -1,8 +1,7 @@
-
 .login-card {
   background-color: var(--Color_White);
-  max-width: 25rem;
-  width: 100%;
+  width: 25rem;
+  max-width: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -10,6 +9,10 @@
   margin: 1rem;
   padding: 0.5rem 1.5rem 1rem;
   box-shadow: RGBA(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.btn-area{
+  display: flex;
+  flex-direction: column;
 }
 .text-login {
   margin: 1rem 0;
@@ -35,6 +38,9 @@
   justify-content: space-between;
   display: flex;
 }
+.horizontal-div label {
+  user-select: none;
+}
 .btn {
   margin-right: 0;
   text-align: center;
@@ -52,6 +58,9 @@
 .forgot-link {
   font-size: 1rem;
   color: var(--Primary_Color);
+}
+.forgot-link:hover {
+  color: var(--Color_Black);
 }
 .input {
   width: 90%;

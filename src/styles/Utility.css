@@ -15,7 +15,7 @@
 .card {
   border: none;
 }
-.wd-100{
+.wd-100 {
   width: 100%;
 }
 .mr {
@@ -23,6 +23,9 @@
 }
 .center-text {
   text-align: center;
+}
+.error-msg {
+  color: var(--Color_Danger_500);
 }
 .card-image-container {
   display: flex;

@@ -1,8 +1,10 @@
 .navigation {
-  background-color: var(--Color_White);
   box-shadow: var(--navbar_shadow);
+  justify-content: space-around;
 }
-
+.secondary-list {
+  padding: 0 20px;
+}
 .logo-text {
   margin-left: 1rem;
   color: var(--Primary_Color);
@@ -11,16 +13,19 @@
   display: flex;
   color: var(--Secondary_Color);
 }
+.user-icon {
+  color: var(--Primary_Color);
+}
 .heart-icon,
 .shop-icon {
   color: var(--Primary_Color);
 }
 .cart-badge {
-  bottom: 1.3rem;
+  bottom: 1.1rem;
 }
 .favourite-badge {
-  bottom: 1.3rem;
-  left: 2rem;
+  bottom: 1.1rem;
+  left: 2.2rem;
 }
 .search-input {
   width: 100%;
