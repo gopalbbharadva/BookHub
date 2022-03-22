@@ -1,11 +1,9 @@
-import axios from "axios";
 import React from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Navbar } from "../../../barrelexport/Componentutil";
 import { useForm } from "../../../Hooks/useForm";
 import { useTogglePassword } from "../../../Hooks/useTogglePassword";
-import { useNavigate } from "react-router";
 import "./signup.css";
 import { useAuth } from "../../../contexts/AuthContext";
 
@@ -13,8 +11,8 @@ export const Signup = () => {
   const {
     passwordToggle,
     confirmPasswordToggle,
-    togglePassword,
-    toggleConfirmPassword,
+    checkPasswordView,
+    checkConfirmPasswordView,
   } = useTogglePassword();
 
   const { formData, errors, formHandler } = useForm();
@@ -72,11 +70,11 @@ export const Signup = () => {
               {passwordToggle.isEyeIcon ? (
                 <FaRegEye
                   className="cursor pd-hztl-sm fs-lg"
-                  onClick={togglePassword}
+                  onClick={checkPasswordView}
                 />
               ) : (
                 <FaRegEyeSlash
-                  onClick={togglePassword}
+                  onClick={checkPasswordView}
                   className="cursor pd-hztl-sm fs-lg"
                 />
               )}
@@ -93,12 +91,12 @@ export const Signup = () => {
               {confirmPasswordToggle.isEyeIcon ? (
                 <FaRegEye
                   className="cursor pd-hztl-sm fs-lg"
-                  onClick={toggleConfirmPassword}
+                  onClick={checkConfirmPasswordView}
                 />
               ) : (
                 <FaRegEyeSlash
                   className="cursor pd-hztl-sm fs-lg"
-                  onClick={toggleConfirmPassword}
+                  onClick={checkConfirmPasswordView}
                 />
               )}
             </div>

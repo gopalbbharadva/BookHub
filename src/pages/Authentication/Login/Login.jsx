@@ -9,7 +9,7 @@ import { useTogglePassword } from "../../../Hooks/useTogglePassword";
 import "./Login.css";
 
 export const Login = () => {
-  const { passwordToggle, togglePassword } = useTogglePassword();
+  const { passwordToggle, checkPasswordView } = useTogglePassword();
   const { loginHandler, signinData } = useAuth();
   const { email, password } = signinData;
 
@@ -42,11 +42,11 @@ export const Login = () => {
                 placeholder="e.g abc123"
               />
               {passwordToggle.isEyeIcon ? (
-                <FaRegEye className="cursor fs-lg" onClick={togglePassword} />
+                <FaRegEye className="cursor fs-lg" onClick={checkPasswordView} />
               ) : (
                 <FaRegEyeSlash
                   className="cursor fs-lg"
-                  onClick={togglePassword}
+                  onClick={checkPasswordView}
                 />
               )}
             </div>

@@ -14,7 +14,7 @@ const useForm = () => {
 
   const validateForm = (name, value) => {
     switch (name) {
-      case "confirmPassword":
+      case "CONFIRM_PASSWORD":
         if (value !== formData.password) {
           setErrors({
             ...errors,
@@ -22,7 +22,6 @@ const useForm = () => {
           });
         } else {
           const newObj = omit(errors, "isMatch");
-          console.log(newObj);
           setErrors(newObj);
         }
         break;
