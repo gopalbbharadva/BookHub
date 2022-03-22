@@ -1,0 +1,4 @@
+.dismiss-icon:hover {
+  transition: 0.3s ease-in;
+  background-color: var(--Color_Danger_200);
+}
