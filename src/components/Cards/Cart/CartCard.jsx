@@ -44,68 +44,36 @@ export const CartCard = ({ cartItem }) => {
       } catch (error) {
         console.log(error);
       }
-    removeFromCartHandler();
-  };
-
-  const removeFromCartHandler = async () => {
-    try {
-      const res = await axios.delete(`/api/user/cart/${_id}`, {
-        headers: {
-          authorization: token,
-        },
-      });
-      if (res.status === 200 || res.status === 201) {
-        cartDispatch({
-          type: "REMOVE_FROM_CART",
-          payload: res.data.cart,
-          cartItem,
-        });
-      }
-      toast.error(`${title} removed from cart`, toastProps);
-    } catch (error) {
-      console.log(error);
+      removeFromCartHandler();
     }
-  };
 
-  const incrementQuantity = async () => {
-    try {
-      const res = await axios.post(
-        `/api/user/cart/${_id}`,
-        {
-          action: {
-            type: "increment",
-          },
-        },
-        {
+    const removeFromCartHandler = async () => {
+      try {
+        const res = await axios.delete(`/api/user/cart/${_id}`, {
           headers: {
             authorization: token,
           },
-        }
-      );
-      if (res.status === 200 || res.status === 201) {
-        cartDispatch({
-          type: "ADD_TO_CART",
-          payload: res.data.cart,
-          product: cartItem,
         });
+        if (res.status === 200 || res.status === 201) {
+          cartDispatch({
+            type: "REMOVE_FROM_CART",
+            payload: res.data.cart,
+            cartItem,
+          });
+        }
+        toast.error(`${title} removed from cart`, toastProps);
+      } catch (error) {
+        console.log(error);
       }
-      toast.success(`One more ${title} book added `, toastProps);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    };
 
-  const decrementQuantity = async () => {
-    if (quantity === 1) {
-      removeFromCartHandler();
-      return;
-    } else {
+    const incrementQuantity = async () => {
       try {
         const res = await axios.post(
           `/api/user/cart/${_id}`,
           {
             action: {
-              type: "decrement",
+              type: "increment",
             },
           },
           {
@@ -116,58 +84,94 @@ export const CartCard = ({ cartItem }) => {
         );
         if (res.status === 200 || res.status === 201) {
           cartDispatch({
-            type: "DECREMENT_QUANTITY",
+            type: "ADD_TO_CART",
             payload: res.data.cart,
             product: cartItem,
           });
         }
-        toast.warn(`Oh! one ${title} book deducted `, toastProps);
+        toast.success(`One more ${title} book added `, toastProps);
       } catch (error) {
         console.log(error);
       }
-    }
-  };
+    };
 
-  return (
-    <div className="card-hz">
-      <div className="horizontal-image-container">
-        <img className="hr-image" src={imgSrc} alt="No preview available" />
-      </div>
-      <div className="card-body-wrapper">
-        <div className="card-body">
-          <h3 className="card-title">{title}</h3>
-          <small>{author}</small>
-          <p className="card-sell-price">
-            <span>{sellPrice}₹</span>
-            <span className="card-cost-price">{costPrice}₹</span>
-            <span className="card-discount">{discount}%off</span>
-          </p>
-          <div className="quantity-count">
-            <button onClick={incrementQuantity} className="button-count-plus">
-              <span className="flex">
-                <FiPlus />
-              </span>
-            </button>
-            <p className="quantity-value">{quantity}</p>
-            <button onClick={decrementQuantity} className="button-count-minus">
-              <span className="flex">
-                <FiMinus />
-              </span>
-            </button>
-          </div>
-          <div className="card-button-container mt">
-            <button
-              onClick={removeFromCartHandler}
-              className="btn is-btn-danger is-outlined pd-sm"
-            >
-              Remove from cart
-            </button>
-            <button onClick={addToWishList} className="is-secondary pd-sm">
-              Move to favourites
-            </button>
+    const decrementQuantity = async () => {
+      if (quantity === 1) {
+        removeFromCartHandler();
+        return;
+      } else {
+        try {
+          const res = await axios.post(
+            `/api/user/cart/${_id}`,
+            {
+              action: {
+                type: "decrement",
+              },
+            },
+            {
+              headers: {
+                authorization: token,
+              },
+            }
+          );
+          if (res.status === 200 || res.status === 201) {
+            cartDispatch({
+              type: "DECREMENT_QUANTITY",
+              payload: res.data.cart,
+              product: cartItem,
+            });
+          }
+          toast.warn(`Oh! one ${title} book deducted `, toastProps);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    };
+
+    return (
+      <div className="card-hz">
+        <div className="horizontal-image-container">
+          <img className="hr-image" src={imgSrc} alt="No preview available" />
+        </div>
+        <div className="card-body-wrapper">
+          <div className="card-body">
+            <h3 className="card-title">{title}</h3>
+            <small>{author}</small>
+            <p className="card-sell-price">
+              <span>{sellPrice}₹</span>
+              <span className="card-cost-price">{costPrice}₹</span>
+              <span className="card-discount">{discount}%off</span>
+            </p>
+            <div className="quantity-count">
+              <button onClick={incrementQuantity} className="button-count-plus">
+                <span className="flex">
+                  <FiPlus />
+                </span>
+              </button>
+              <p className="quantity-value">{quantity}</p>
+              <button
+                onClick={decrementQuantity}
+                className="button-count-minus"
+              >
+                <span className="flex">
+                  <FiMinus />
+                </span>
+              </button>
+            </div>
+            <div className="card-button-container mt">
+              <button
+                onClick={removeFromCartHandler}
+                className="btn is-btn-danger is-outlined pd-sm"
+              >
+                Remove from cart
+              </button>
+              <button onClick={addToWishList} className="is-secondary pd-sm">
+                Move to favourites
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 };
