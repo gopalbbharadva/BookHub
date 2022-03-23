@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { FiMinus, FiPlus } from "react-icons/fi";
+import { toast } from "react-toastify";
 import { useAuth } from "../../../contexts/AuthContext";
 import { useCart } from "../../../contexts/CartContext";
 import { useWishList } from "../../../contexts/WishListContext";
@@ -59,6 +60,7 @@ export const CartCard = ({ cartItem }) => {
           cartItem,
         });
       }
+      toast.error(`${title} removed from cart`, toastProps);
     } catch (error) {
       console.log(error);
     }
@@ -86,6 +88,7 @@ export const CartCard = ({ cartItem }) => {
           product: cartItem,
         });
       }
+      toast.success(`One more ${title} book added `, toastProps);
     } catch (error) {
       console.log(error);
     }
@@ -117,6 +120,7 @@ export const CartCard = ({ cartItem }) => {
             product: cartItem,
           });
         }
+        toast.warn(`Oh! one ${title} book deducted `, toastProps);
       } catch (error) {
         console.log(error);
       }
