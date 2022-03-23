@@ -4,6 +4,7 @@ import { FiMinus, FiPlus } from "react-icons/fi";
 import { toast } from "react-toastify";
 import { useAuth } from "../../../contexts/AuthContext";
 import { useCart } from "../../../contexts/CartContext";
+import { useDataStore } from "../../../contexts/DataStoreContext";
 import { useWishList } from "../../../contexts/WishListContext";
 import "./CartCard.css";
 
@@ -19,8 +20,9 @@ export const CartCard = ({ cartItem }) => {
     discount,
   } = cartItem;
   const { token } = useAuth();
-  const { cartState, cartDispatch } = useCart();
   const { setWishList, userWishList, setUserWishList } = useWishList();
+  const { cartDispatch } = useCart();
+  const { toastProps } = useDataStore();
 
   const addToWishList = async () => {
     if (!token) {
@@ -42,8 +44,8 @@ export const CartCard = ({ cartItem }) => {
       } catch (error) {
         console.log(error);
       }
+      removeFromCartHandler();
     }
-    removeFromCartHandler();
   };
 
   const removeFromCartHandler = async () => {
