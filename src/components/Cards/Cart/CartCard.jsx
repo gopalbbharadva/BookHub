@@ -44,9 +44,7 @@ export const CartCard = ({ cartItem }) => {
       } catch (error) {
         console.log(error);
       }
-      toast.success("Item added to wishlist", toastProps);
-      removeFromCartHandler();
-    }
+    removeFromCartHandler();
   };
 
   const removeFromCartHandler = async () => {
