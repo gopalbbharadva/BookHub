@@ -1,7 +1,6 @@
 export {
   HomeCard,
   ProductsListCard,
-  WishListCard,
   CartCard,
 } from "../components/Cards/CardsBarrel";
 export { Navbar } from "../components/Navbar/Navbar";
