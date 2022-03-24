@@ -1,3 +1,8 @@
+.sidebar {
+  border-right: 2px solid var(--Primary_Color);
+  align-self: flex-start;
+}
+
 .filter-heading {
   display: flex;
   justify-content: space-between;
@@ -41,10 +46,10 @@
 .rating-star {
   color: var(--Color_Warn_500);
 }
-.slider{
+.slider {
   width: 100%;
 }
-.range-label{
+.range-label {
   color: var(--Primary_Color);
   width: 100%;
   display: flex;
