@@ -21,8 +21,6 @@ export const CartCard = ({ cartItem }) => {
   const { wishListData } = wishListState;
   const { toastProps } = useDataStore();
 
-  
-
   return (
     <div className="card-hz flex-row">
       <img className="hr-image" src={imgSrc} alt="book cover photo" />
@@ -59,7 +57,9 @@ export const CartCard = ({ cartItem }) => {
             </button>
           ) : (
             <button
-              onClick={() => removeFromCart(token, _id, cartDispatch)}
+              onClick={() =>
+                removeFromCart(token, _id, cartDispatch, toastProps)
+              }
               className="button-count-minus"
             >
               <span className="flex">
@@ -72,8 +72,8 @@ export const CartCard = ({ cartItem }) => {
           <button
             onClick={() => {
               wishListData.map((item) => item._id === cartItem._id)
-                ? removeFromCart(token, _id, cartDispatch)
-                : addToWishList(token, cartItem, wishListDispatch);
+                ? removeFromCart(token, _id, cartDispatch, toastProps)
+                : addToWishList(token, cartItem, wishListDispatch, toastProps);
             }}
             className="btn is-btn-secondary is-outlined pd-sm"
           >
