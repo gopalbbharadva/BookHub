@@ -7,6 +7,7 @@ const DataStoreProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [showLoader, setShowLoader] = useState(true);
+  const [searchText, setSearchText] = useState("");
 
   const toastProps = {
     theme: "dark",
@@ -30,6 +31,8 @@ const DataStoreProvider = ({ children }) => {
         setCategories,
         products,
         setProducts,
+        searchText,
+        setSearchText,
       }}
     >
       {children}
