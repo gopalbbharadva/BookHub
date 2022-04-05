@@ -52,3 +52,9 @@
 .login-link {
   text-transform: uppercase;
 }
+
+@media screen and (max-width:550px){
+  .search-icon, .search-bar{
+    display: none;
+  } 
+}
