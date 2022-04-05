@@ -18,8 +18,7 @@ export const Cart = () => {
   !token && navigate("/login");
 
   return (
-    <div>
-      <Navbar />
+    <>
       <h1 className="main-heading">My cart</h1>
       <main className="main-container">
         {cartData.length !== 0 ? (
@@ -68,6 +67,6 @@ export const Cart = () => {
           </div>
         )}
       </main>
-    </div>
+    </>
   );
 };
