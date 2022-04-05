@@ -1,5 +1,5 @@
-import { createContext, useContext, useState } from "react";
-import { toast } from "react-toastify";
+import axios from "axios";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const DataStoreContext = createContext();
 
@@ -20,6 +20,17 @@ const DataStoreProvider = ({ children }) => {
   setTimeout(() => {
     setShowLoader(false);
   }, 1500);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const { data } = await axios.get("/api/products");
+        setProducts([...data.products]);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
 
   return (
     <DataStoreContext.Provider
