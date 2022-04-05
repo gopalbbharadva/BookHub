@@ -3,6 +3,12 @@ const filterReducer = (state, action) => {
     case "SORT_BY":
       return { ...state, sortBy: action.payload };
 
+    case "SET_CATEGORY":
+      return {
+        ...state,
+        categories: { ...state.categories, [action.payload]: true },
+      };
+
     case "FILTER_BY_FICTION":
       return {
         ...state,
@@ -22,11 +28,12 @@ const filterReducer = (state, action) => {
       };
 
     case "FILTER_BY_FAMILY_AND_RELATIONSHIP":
+      console.log("family");
       return {
         ...state,
         categories: {
           ...state.categories,
-          Family_and_relationship: action.payload,
+          Family_relationship: action.payload,
         },
       };
 

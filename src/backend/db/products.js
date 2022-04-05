@@ -30,7 +30,7 @@ export const products = [
     costPrice: "175",
     discount: "28",
     ratings: "3.5",
-    categoryName: "Family_and_relationship",
+    categoryName: "Family_relationship",
   },
   {
     _id: uuid(),
@@ -43,7 +43,7 @@ export const products = [
     sellPrice: "150",
     discount: "40",
     ratings: "2.8",
-    categoryName: "Family_and_relationship",
+    categoryName: "Family_relationship",
   },
   {
     _id: uuid(),
@@ -56,7 +56,7 @@ export const products = [
     sellPrice: "195",
     discount: "19",
     ratings: "1.9",
-    categoryName: "Family_and_relationship",
+    categoryName: "Family_relationship",
   },
   {
     _id: uuid(),
