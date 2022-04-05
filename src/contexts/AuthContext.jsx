@@ -11,8 +11,9 @@ toast.configure();
 
 const AuthContextProvider = ({ children }) => {
   const localStorageToken = JSON.parse(localStorage.getItem("loginToken"));
-  const { formData } = useForm();
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState(
+    localStorageToken && localStorageToken.user
+  );
   const [token, setToken] = useState(
     localStorageToken && localStorageToken.token
   );
@@ -25,15 +26,15 @@ const AuthContextProvider = ({ children }) => {
 
   const navigate = useNavigate();
 
-  const signupHandler = async () => {
+  const signupHandler = async (formData) => {
     try {
       const { data } = await axios.post("/api/auth/signup", formData);
       localStorage.setItem(
         "loginToken",
-        JSON.stringify({ token: data.encodedToken })
+        JSON.stringify({ token: data.encodedToken, user: data.createdUser })
       );
       setToken(data.encodedToken);
-      setCurrentUser(data.foundUser);
+      setCurrentUser(data.createdUser);
       toast.success(`Hi user, you are signed up`, toastProps);
       navigate("/");
     } catch (error) {
@@ -46,7 +47,7 @@ const AuthContextProvider = ({ children }) => {
       const { data } = await axios.post("/api/auth/login", signinData);
       localStorage.setItem(
         "loginToken",
-        JSON.stringify({ token: data.encodedToken })
+        JSON.stringify({ token: data.encodedToken, user: data.foundUser })
       );
       setToken(data.encodedToken);
       setCurrentUser(data.foundUser);
@@ -72,6 +73,7 @@ const AuthContextProvider = ({ children }) => {
       value={{
         token,
         setToken,
+        currentUser,
         loginHandler,
         signupHandler,
         signinData,
