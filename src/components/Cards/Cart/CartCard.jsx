@@ -17,8 +17,10 @@ export const CartCard = ({ cartItem }) => {
     cartItem;
   const { token } = useAuth();
   const { cartDispatch } = useCart();
-  const { wishListState, wishListDispatch } = useWishList();
-  const { wishListData } = wishListState;
+  const {
+    wishListState: { wishListData },
+    wishListDispatch,
+  } = useWishList();
   const { toastProps } = useDataStore();
 
   return (
@@ -69,15 +71,26 @@ export const CartCard = ({ cartItem }) => {
           )}
         </div>
         <div className="card-button-container mt">
-          <button
-            onClick={() => {
-              removeFromCart(token, _id, cartDispatch, toastProps);
-              addToWishList(token, cartItem, wishListDispatch, toastProps);
-            }}
-            className="btn is-btn-secondary is-outlined pd-sm"
-          >
-            Move to wishlist
-          </button>
+          {wishListData.find((item) => item._id === cartItem._id) ? (
+            <button
+              onClick={() =>
+                removeFromCart(token, _id, cartDispatch, toastProps)
+              }
+              className="btn is-btn-secondary is-outlined pd-sm"
+            >
+              ALREADY IN WISHLIST
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                removeFromCart(token, _id, cartDispatch, toastProps);
+                addToWishList(token, cartItem, wishListDispatch, toastProps);
+              }}
+              className="btn is-btn-secondary is-outlined pd-sm"
+            >
+              MOVE IN WISHLIST
+            </button>
+          )}
         </div>
       </div>
     </div>
