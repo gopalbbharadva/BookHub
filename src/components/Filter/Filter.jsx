@@ -8,13 +8,8 @@ import { actionTypes } from "../../helperFunctions/Filter/actionTypes";
 export const Filter = () => {
   const { filterState, filterDispatch } = useFilter();
   const { sortBy, categories, rating, price } = filterState;
-  const {
-    Fiction,
-    Non_fiction,
-    Philosophy,
-    Family_and_relationship,
-    Self_help,
-  } = categories;
+  const { Fiction, Non_fiction, Philosophy, Family_relationship, Self_help } =
+    categories;
   const {
     CLEAR_ALL,
     FILTER_BY_PRICE_RANGE,
@@ -26,7 +21,6 @@ export const Filter = () => {
     FILTER_BY_SELF_HELP,
     SORT_BY_RATING,
   } = actionTypes;
-
 
   return (
     <>
@@ -153,8 +147,8 @@ export const Filter = () => {
                   payload: e.target.checked,
                 })
               }
-              checked={Family_and_relationship}
-              value={Family_and_relationship}
+              checked={Family_relationship}
+              value={Family_relationship}
               type="checkbox"
               id="family"
             />
