@@ -10,7 +10,7 @@
   padding: 0.5rem 1.5rem 1rem;
   box-shadow: RGBA(0, 0, 0, 0.24) 0px 3px 8px;
 }
-.is-solid:disabled{
+.is-solid:disabled {
   background-color: var(--Secondary_Border_Color);
   color: var(--Secondary_Color);
 }
@@ -68,7 +68,6 @@
   outline: none;
   margin: 0;
 }
-.mg-top{
-    margin-top: .8rem;
+.mg-top {
+  margin-top: 0.8rem;
 }
-
