@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useContext} from "react";
+import { createContext, useContext } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { useDataStore } from "./DataStoreContext";
@@ -33,8 +33,8 @@ const AuthContextProvider = ({ children }) => {
   const loginHandler = async () => {
     try {
       const { data } = await axios.post("/api/auth/login", {
-        email: "adarshbalika@gmail.com",
-        password: "adarshbalika",
+        email: "gopal123@gmail.com",
+        password: "Gopal@123",
       });
       localStorage.setItem(
         "loginToken",

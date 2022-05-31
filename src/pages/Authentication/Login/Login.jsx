@@ -13,8 +13,8 @@ export const Login = () => {
 
   const dummyLogin = () => {
     setSigningData({
-      email: "adarshbalika@gmail.com",
-      password: "adarshbalika",
+      email: "gopal123@gmail.com",
+      password: "Gopal@123",
     });
     loginHandler();
   };

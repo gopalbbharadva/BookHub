@@ -1,8 +1,8 @@
 import {
   createContext,
+  useEffect,
   useReducer,
   useContext,
-  useEffect,
   useState,
 } from "react";
 import { getAddressHandler } from "../handlers/addressHandlers";
