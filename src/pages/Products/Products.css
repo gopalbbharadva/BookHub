@@ -23,7 +23,10 @@
   grid-template-columns: repeat(4, 1fr);
 }
 .filter-container {
+  max-height: 80vh;
+  overflow-y: scroll;
   position: sticky;
+  scrollbar-color: var(--Primary_Color) var(--Color_White);
   top: 5rem;
 }
 
