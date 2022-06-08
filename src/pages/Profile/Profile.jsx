@@ -17,6 +17,7 @@ export const Profile = () => {
   useEffect(() => {
     !token && navigate("/login");
   }, []);
+
   const setProfileLink = (isActive) => {
     return {
       color: isActive ? "#0ea5e9" : "#000000",
