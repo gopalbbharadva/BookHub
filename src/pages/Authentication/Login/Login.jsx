@@ -54,13 +54,6 @@ export const Login = () => {
               />
             )}
           </div>
-          <div className="horizontal-div">
-            <label className="cursor" htmlFor="remember-me">
-              <input id="remember-me" type="checkbox" />
-              Remember me
-            </label>
-            <a className="forgot-link cursor">Forgot Password?</a>
-          </div>
           <div className="btn-area">
             <button
               type="button"
