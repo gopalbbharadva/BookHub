@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { omit } from "lodash";
 import {
   useAuth,
@@ -8,6 +8,7 @@ import {
 import {
   addAddressHandler,
   editAddressHandler,
+  getAddressHandler,
 } from "../../../handlers/addressHandlers";
 import { AddressList } from "./components/AddressList";
 
@@ -28,6 +29,10 @@ export const Addresses = () => {
   const { toastProps } = useDataStore();
 
   const isNewAddress = addresses.find((item) => item._id === address._id);
+
+  useEffect(() => {
+    getAddressHandler(token, addressDispatch);
+  }, [token]);
 
   const submitHandler = () => {
     if (isNewAddress) {

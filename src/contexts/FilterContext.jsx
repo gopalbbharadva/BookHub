@@ -4,6 +4,7 @@ import { filterReducer } from "../reducers/filterReducer";
 
 const FilterContext = createContext({});
 
+
 const FilterProvider = ({ children }) => {
   const [filterState, filterDispatch] = useReducer(filterReducer, initialState);
 

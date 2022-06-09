@@ -8,6 +8,7 @@
   padding: 1rem;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 .intro-header,
 .intro-quote {
@@ -60,7 +61,6 @@
   text-align: center;
 }
 .main-heading {
-  text-transform: uppercase;
   padding: 1rem;
   font-size: 1.5rem;
   text-align: center;
@@ -81,11 +81,12 @@
   }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 975px) {
   .image {
     display: none;
   }
-  .intro-section {
+  .app-intro{
+    margin-top: 3rem;
     text-align: center;
   }
 }

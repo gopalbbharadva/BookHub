@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import { setNavLink } from "../../helperFunctions/setNavLink";
 import "./profile.css";
 
 export const Profile = () => {

@@ -1,8 +1,8 @@
 import {
   createContext,
+  useEffect,
   useReducer,
   useContext,
-  useEffect,
   useState,
 } from "react";
 import { getAddressHandler } from "../handlers/addressHandlers";
@@ -54,10 +54,6 @@ const AddressProvider = ({ children }) => {
     mobile: "",
   });
   const { token } = useAuth();
-
-  useEffect(() => {
-    getAddressHandler(token, addressDispatch);
-  }, []);
 
   return (
     <AddressContext.Provider
