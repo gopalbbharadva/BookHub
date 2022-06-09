@@ -45,7 +45,7 @@ export const Navbar = () => {
     return (e) => {
       clearTimeout(timer);
       timer = setTimeout(() => {
-        timer = cb(e);
+        cb(e);
       }, delay);
     };
   };

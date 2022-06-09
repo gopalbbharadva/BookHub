@@ -1,5 +1,7 @@
 import React from "react";
 import { useAddress } from "../../../contexts/AddressContext";
+import { useAuth } from "../../../contexts/AuthContext";
+import { getAddressHandler } from "../../../handlers/addressHandlers";
 import "./address.css";
 
 export const Address = ({ address }) => {

@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { billCalculate } from "../../helperFunctions/CartHelpers/billCalculate";
 import { Address } from "./components/Address";
 import axios from "axios";
+import { getAddressHandler } from "../../handlers/addressHandlers";
 
 export const Checkout = () => {
   const {
@@ -20,6 +21,7 @@ export const Checkout = () => {
   } = useCart();
   const {
     addressState: { addresses, mobile },
+    addressDispatch,
   } = useAddress();
   const { orderDispatch } = useOrder();
 
@@ -41,6 +43,10 @@ export const Checkout = () => {
         navigate("/profile/orders");
       }, 1000);
   }, [paymentId]);
+
+  useEffect(() => {
+    getAddressHandler(token, addressDispatch);
+  }, []);
 
   const loadScript = (src) => {
     return new Promise((resolve) => {
@@ -118,11 +124,19 @@ export const Checkout = () => {
           <p className="main-heading fs-lg mg-md">Checkout</p>
           {cartData.length !== 0 ? (
             <div className="cart-container">
-              <div className="card-item">
-                {addresses.map((item, index) => (
-                  <Address key={index} address={item} />
-                ))}
-              </div>
+              {addresses.length > 0 ? (
+                <div className="card-item">
+                  {addresses.map((item, index) => (
+                    <Address key={index} address={item} />
+                  ))}
+                </div>
+              ) : (
+                <div className="flex-center">
+                  <Link to="/profile/addresses" className="btn is-solid">
+                    + Add Address
+                  </Link>
+                </div>
+              )}
               <div className="bill">
                 <div className="bill-heading pd-vrtl-sm">
                   <p className="fs-btw-ml align-center">Order Details</p>
@@ -194,12 +208,20 @@ export const Checkout = () => {
                 </div>
                 <Link to="/checkout">
                   <button
+                    disabled={currentAddress ? false : true}
                     onClick={paymentDisplay}
-                    className="btn is-solid w-100"
+                    className="btn is-solid w-100  "
                   >
                     PLACE ORDER
                   </button>
                 </Link>
+                {!currentAddress ? (
+                  <p className="clr-red align-center">
+                    Please select the address
+                  </p>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           ) : (

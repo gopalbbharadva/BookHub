@@ -55,10 +55,6 @@ const AddressProvider = ({ children }) => {
   });
   const { token } = useAuth();
 
-  useEffect(() => {
-    getAddressHandler(token, addressDispatch);
-  }, []);
-
   return (
     <AddressContext.Provider
       value={{
